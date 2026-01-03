@@ -1,0 +1,86 @@
+local v1 = game.Players.LocalPlayer
+local vu2 = v1.Character or v1.CharacterAdded:Wait()
+local v3 = vu2:WaitForChild("Humanoid")
+local v4 = vu2:WaitForChild("HumanoidRootPart")
+local v5 = Vector3.new(57, 3, - 9000)
+local v6 = 0.1
+for _ = 1, 10 do
+    v4.CFrame = CFrame.new(v5)
+    wait(v6)
+end
+local function v12()
+    game:GetService("RunService").Stepped:Connect(function()
+        local v7 = vu2
+        local v8, v9, v10 = pairs(v7:GetDescendants())
+        while true do
+            local v11
+            v10, v11 = v8(v9, v10)
+            if v10 == nil then
+                break
+            end
+            if v11:IsA("BasePart") then
+                v11.CanCollide = false
+            end
+        end
+    end)
+    print("Noclip mode enabled.")
+end
+local v13 = workspace:FindFirstChild("VampireCastle")
+if v13 and v13.PrimaryPart then
+    print("VampireCastle at Z:", v13.PrimaryPart.Position.Z)
+    local v14, v15, v16 = pairs(workspace.RuntimeItems:GetDescendants())
+    local v17 = nil
+    while true do
+        local v18
+        v16, v18 = v14(v15, v16)
+        if v16 == nil then
+            v18 = v17
+            break
+        end
+        if v18:IsA("Model") and (v18.Name == "MaximGun" and (v18.PrimaryPart.Position - v13.PrimaryPart.Position).Magnitude <= 500) then
+            break
+        end
+    end
+    if v18 then
+        local v19 = v18:FindFirstChild("VehicleSeat")
+        if v19 then
+            vu2:PivotTo(v19.CFrame)
+            v19:Sit(v3)
+            print("Seated on MaximGun.")
+            v12()
+        else
+            warn("No VehicleSeat on MaximGun.")
+        end
+    else
+        warn("No MaximGun near VampireCastle.")
+    end
+else
+    warn("VampireCastle missing or invalid PrimaryPart.")
+end
+if not closestGun then
+    local v20, v21, v22 = pairs(workspace.RuntimeItems:GetDescendants())
+    local v23 = nil
+    while true do
+        local v24
+        v22, v24 = v20(v21, v22)
+        local v25
+        if v22 == nil then
+            v25 = v23
+            break
+        end
+        if v24.Name == "Chair" then
+            v25 = v24:FindFirstChild("Seat")
+            if v25 and (v25.Position.Z >= - 9500 and v25.Position.Z <= - 9000) then
+                break
+            end
+        end
+    end
+    if v25 then
+        vu2:PivotTo(v25.CFrame)
+        v25:Sit(v3)
+        print("Seated on Chair at Z:", v25.Position.Z)
+        v12()
+    else
+        warn("No VampireCastle, MaximGun, or Chair found.")
+    end
+end
