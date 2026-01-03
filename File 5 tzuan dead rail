@@ -1,0 +1,74 @@
+local v1 = game.Players.LocalPlayer.Character or character.CharacterAdded:Wait()
+local v2 = v1:WaitForChild("Humanoid")
+local v3 = v1:WaitForChild("HumanoidRootPart")
+local v4 = game:GetService("TweenService")
+local v5 = false
+local v6 = 3
+local v7 = 0.5
+local v8 = 57
+local v9 = nil
+local v10 = 10
+local v11 = false
+local v12 = false
+local v13 = 0.1
+for v14 = 30000, - 49032.99, - 2000 do
+    if v5 then
+        break
+    end
+    local v15 = math.max(v6, 3)
+    local v16 = v4:Create(v3, TweenInfo.new(v7, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {
+        CFrame = CFrame.new(Vector3.new(v8, v15, v14))
+    })
+    v16:Play()
+    v16.Completed:Wait()
+    local v17 = workspace:FindFirstChild("Sterling")
+    if v17 then
+        if v17.PrimaryPart then
+            v9 = v17.PrimaryPart.Position
+            local v18 = (v3.Position - v9).Magnitude
+            print("Sterling found at distance:", v18)
+            v5 = true
+        end
+    end
+end
+if v5 and v9 then
+    for _ = 1, v10 do
+        v3.CFrame = CFrame.new(v9)
+        if not v11 then
+            print("Teleported to Sterling town.")
+            v11 = true
+        end
+        local v19 = math.huge
+        local v20, v21, v22 = pairs(workspace.RuntimeItems:GetDescendants())
+        local v23 = nil
+        while true do
+            local v24
+            v22, v24 = v20(v21, v22)
+            if v22 == nil then
+                break
+            end
+            if v24.Name == "Chair" then
+                local v25 = v24:FindFirstChild("Seat")
+                if v25 then
+                    local v26 = (v3.Position - v25.Position).Magnitude
+                    if v26 < v19 then
+                        v23 = v25
+                        v19 = v26
+                    end
+                end
+            end
+        end
+        if v23 and not v12 then
+            v1:PivotTo(v23.CFrame)
+            v23:Sit(v2)
+            print("Seated on Chair.")
+            v12 = true
+        elseif not (v23 or v12) then
+            print("No Chair found nearby.")
+            v12 = true
+        end
+        task.wait(v13)
+    end
+else
+    warn("Sterling not found after completing tweening.")
+end
