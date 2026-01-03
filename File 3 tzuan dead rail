@@ -1,0 +1,78 @@
+local v1 = game.Players.LocalPlayer
+local vu2 = v1.Character or v1.CharacterAdded:Wait()
+local v3 = vu2
+local v4 = vu2.WaitForChild(v3, "HumanoidRootPart")
+local v5 = game:GetService("TweenService")
+game:GetService("RunService").Stepped:Connect(function()
+    local v6 = vu2
+    local v7, v8, v9 = pairs(v6:GetDescendants())
+    while true do
+        local v10
+        v9, v10 = v7(v8, v9)
+        if v9 == nil then
+            break
+        end
+        if v10:IsA("BasePart") then
+            v10.CanCollide = false
+        end
+    end
+end)
+local v11 = math.huge
+local v12 = vu2
+local v13 = nil
+for v14 = 30000, - 49032.99, - 2000 do
+    if v13 then
+        break
+    end
+    print("Tweening to Z:", v14)
+    local v15 = v5:Create(v4, TweenInfo.new(0.5, Enum.EasingStyle.Linear), {
+        CFrame = CFrame.new(57, 3, v14)
+    })
+    if not v15 then
+        warn("Tween failed to create. Check TweenService parameters.")
+        break
+    end
+    v15:Play()
+    v15.Completed:Wait()
+    local v16, v17, v18 = pairs({
+        "MediumTownTemplate",
+        "SmallTownTemplate",
+        "LargeTownTemplate"
+    })
+    while true do
+        local v19
+        v18, v19 = v16(v17, v18)
+        if v18 == nil then
+            break
+        end
+        local v20 = workspace.Towns:FindFirstChild(v19)
+        local v21 = v20 and v20:FindFirstChild("Buildings")
+        if v21 then
+            v21 = v20.Buildings:FindFirstChild("Bank")
+        end
+        if v21 and v21.PrimaryPart then
+            local v22, v23, v24 = pairs(workspace.RuntimeItems:GetDescendants())
+            while true do
+                local v25
+                v24, v25 = v22(v23, v24)
+                if v24 == nil then
+                    break
+                end
+                if v25.Name == "Chair" and v25:FindFirstChild("Seat") then
+                    local v26 = (v21.PrimaryPart.Position - v25.Seat.Position).Magnitude
+                    if v26 < v11 then
+                        v13 = v25
+                        v11 = v26
+                    end
+                end
+            end
+        end
+    end
+end
+if v13 then
+    v4.CFrame = v13:GetPivot()
+    v13.Seat:Sit(v12:WaitForChild("Humanoid"))
+    print("Teleported to and seated on the closest Chair.")
+else
+    warn("No Chair found near any Bank.")
+end
