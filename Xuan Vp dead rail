@@ -1,5 +1,3 @@
--- ts file was generated at discord.gg/25ms
-
 
 pcall(function()
     local vu1 = game:GetService("HttpService")
