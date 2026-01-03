@@ -1,0 +1,79 @@
+local v1 = game.Players.LocalPlayer
+local vu2 = v1.Character or v1.CharacterAdded:Wait()
+local v3 = vu2
+local v4 = vu2.WaitForChild(v3, "Humanoid")
+local v5 = vu2
+local v6 = vu2.WaitForChild(v5, "HumanoidRootPart")
+local v7 = game:GetService("TweenService")
+game:GetService("RunService").Stepped:Connect(function()
+    local v8 = vu2
+    local v9, v10, v11 = pairs(v8:GetDescendants())
+    while true do
+        local v12
+        v11, v12 = v9(v10, v11)
+        if v11 == nil then
+            break
+        end
+        if v12:IsA("BasePart") then
+            v12.CanCollide = false
+        end
+    end
+end)
+local v13 = vu2
+local v14 = false
+local v15 = 3
+local v16 = 0.5
+local v17 = 57
+local v18 = 10
+local v19 = 0.1
+for v20 = 30000, - 49032.99, - 2000 do
+    if v14 then
+        break
+    end
+    local v21 = math.max(v15, 3)
+    local v22 = v7:Create(v6, TweenInfo.new(v16, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {
+        CFrame = CFrame.new(Vector3.new(v17, v21, v20))
+    })
+    v22:Play()
+    v22.Completed:Wait()
+    local v23 = workspace:FindFirstChild("TeslaLab")
+    if v23 then
+        if v23.PrimaryPart then
+            local v24 = v23.PrimaryPart.Position
+            print("TeslaLab found at:", v24)
+            for _ = 1, v18 do
+                v6.CFrame = CFrame.new(v24)
+                wait(v19)
+            end
+            local v25, v26, v27 = pairs(workspace.RuntimeItems:GetDescendants())
+            local v28 = nil
+            while true do
+                local v29
+                v27, v29 = v25(v26, v27)
+                local v30
+                if v27 == nil then
+                    v30 = v28
+                    break
+                end
+                if v29.Name == "Chair" then
+                    v30 = v29:FindFirstChild("Seat")
+                    if v30 and (v24 - v30.Position).Magnitude <= 400 then
+                        break
+                    end
+                end
+            end
+            if v30 then
+                v13:PivotTo(v30.CFrame)
+                v30:Sit(v4)
+                print("Seated on Chair near TeslaLab.")
+                v14 = true
+            else
+                warn("No Chair found within 400 blocks of TeslaLab.")
+                v14 = true
+            end
+            break
+        end
+    end
+end
+if not v14 then
+    warn("No TeslaLab found along the specified Z range.")
