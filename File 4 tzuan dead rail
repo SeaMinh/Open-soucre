@@ -1,0 +1,57 @@
+local v1 = game.Players.LocalPlayer
+local vu2 = v1.Character or v1.CharacterAdded:Wait()
+local v3 = vu2
+local v4 = vu2.WaitForChild(v3, "Humanoid")
+local v5 = vu2
+local v6 = vu2.WaitForChild(v5, "HumanoidRootPart")
+local v7 = game:GetService("TweenService")
+game:GetService("RunService").Stepped:Connect(function()
+    local v8 = vu2
+    local v9, v10, v11 = pairs(v8:GetDescendants())
+    while true do
+        local v12
+        v11, v12 = v9(v10, v11)
+        if v11 == nil then
+            break
+        end
+        if v12:IsA("BasePart") then
+            v12.CanCollide = false
+        end
+    end
+end)
+local v13 = vu2
+local v14 = false
+local v15 = 3
+local v16 = 1
+local v17 = 57
+for v18 = 30000, - 49032.99, - 1000 do
+    if v14 then
+        break
+    end
+    local v19 = math.max(v15, 3)
+    local v20 = v7:Create(v6, TweenInfo.new(v16, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {
+        CFrame = CFrame.new(Vector3.new(v17, v19, v18))
+    })
+    v20:Play()
+    v20.Completed:Wait()
+    local v21, v22, v23 = pairs(workspace:GetDescendants())
+    while true do
+        local v24
+        v23, v24 = v21(v22, v23)
+        if v23 == nil then
+            break
+        end
+        if v24:IsA("Model") and v24.Name == "Cannon" then
+            local v25 = v24:FindFirstChild("VehicleSeat")
+            if v25 then
+                v13:PivotTo(v25.CFrame)
+                v25:Sit(v4)
+                v14 = true
+                break
+            end
+        end
+    end
+end
+if not v14 then
+    warn("No cannon with a seat found along the specified Z range.")
+end
